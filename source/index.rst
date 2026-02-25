@@ -12,11 +12,11 @@ The *req* is a *progressively formal* systems specification language:
 
 * *Embeds markdown*, allows to use all markdown constructs to provide rich information such as images, diagrams, table and maths.
 
-* *Explicit definitions* of terms within the specification. This makes extracting glossary and ontology easy and provide a single source of truth for all the wording.
+* *Explicit definitions* of terms within the specification. This makes extracting a glossary and ontology easy and provides a single source of truth for all the wording.
 
-* *Formal syntax* at its core to write *formal properties* of the system, allowing for units, maths and logics.
+* *Formal syntax* at its core to write *formal properties* of the system, allowing for units, maths and logic.
 
-The req language aims to express the *core specifications* of a project from stakeholder needs and goals to detailed engineering and design. It provides basic but powerful structural semantics allowing to provide a hierarchy to *definitions*, *functions* and *requirements*.
+The req language aims to express the *core specifications* of a project from stakeholder needs and goals to detailed engineering and design. It provides basic but powerful structural semantics, allowing for a hierarchy of *definitions*, *parts* and *requirements*.
 
 .. code-block:: req
 
@@ -75,7 +75,7 @@ Features
 
 * *Eliminates vendor lock-in* as requirements are not in ALM but in plain-text source files 
 
-.. note:: The language is still under active developement and this documentation is subject to change in the near future.
+.. note:: The language is still under active development and this documentation is subject to change in the near future.
 
 .. toctree::
   :maxdepth: 1
