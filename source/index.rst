@@ -75,8 +75,11 @@ Features
 
 * *Eliminates vendor lock-in* as requirements are not in ALM but in plain-text source files 
 
+.. note:: The language is still under active developement and this documentation is subject to change in the near future.
+
 .. toctree::
   :maxdepth: 1
   :caption: Contents:
 
   overview.rst
+  glossary.rst

@@ -1,3 +1,4 @@
+.. _language-landscape-label:
 Language Landscape
 ======================
 
@@ -32,7 +33,7 @@ Drawbacks
 Advantages
 ~~~~~~~~~~~~~~~~~~~~~~
 
-* Out-of-the-box abstract concept to design systems
+* Out-of-the-box concepts to design systems
 * Highly customizable semantics 
 * Graphical description
 
@@ -118,6 +119,6 @@ The req language is a middle-ground between all the above mentioned language cat
 
 In this matter, none of the above mentioned language category provide both convenience, precision and non-engineer understandability. 
 
-The main design goal of the req language is to provide a great balance between these three aspects. Note that all the above mentioned languages have been source of inspiration.
+One of the main design goal of the req language is to provide a great balance between these three aspects. Note that all the above mentioned languages have been source of inspiration.
 
 .. note:: A special mention to the FORM-L language, which has established strong groundings for the formal requirements as code approach, and is the main source of inspiration for the req language.
