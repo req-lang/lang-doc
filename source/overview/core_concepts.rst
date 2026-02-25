@@ -38,6 +38,22 @@ Comment
 
 A *comment* is additional information about a given entity. Any entity can be provided with a comment; the comment may be interpreted differently depending on the kind of entity.
 
+
+.. code-block:: req
+   :caption: Example of comment 
+    
+   @@
+   # Rationale 
+
+   After client meeting, format fits the most for the desired application...
+   @@
+   requirement Significant_digit_and_format is
+    @@
+      The {System} shall use decimal format with 2 significant digits 
+    @@
+   requirement
+
+
 .. note::
 
   A common practice is to always provide :ref:`concept-part-label` and :ref:`concept-attribute-label` with a comment that acts as a definition. :ref:`concept-requirement-label` comments can be used as rationale.
@@ -48,6 +64,19 @@ Tags
 
 A *tag* is meta-information about a given entity, organized as a key-value pair. Any entity can be provided with tags and the value is optional.
 Tags are useful to specify additional information about an entity:
+
+
+.. code-block:: req
+   :caption: Example of tag 
+    
+   # verification pray god #
+   requirement Perfection is
+    @@
+      The {System} shall be perfect 
+    @@
+   requirement
+
+
 
 .. note::
 
@@ -84,7 +113,15 @@ A requirement expresses a constraint on the system that can either be an expecta
 * Detailed equipment properties
 * Behavioral modeling
 
-Requirements can include references to definitions, :ref:`concept-part-label` or :ref:`concept-attribute-label`.
+Requirements can include references to definitions, :ref:`concept-part-label` or :ref:`concept-attribute-label`. Requirements can be linked with each other via traceability (explained in the dedicated reference section), the most common link being ``refines``. 
+
+.. code-block:: req
+   :caption: Example of traceability 
+
+   requirement Ensure_sensor_temperature_formal
+   refines Ensure_sensore_temperature_informal is
+      System::Sensor::temperature < 30
+   requirement
 
 .. note::
 
