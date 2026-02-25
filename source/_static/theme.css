@@ -1,0 +1,28 @@
+@font-face {
+  font-family: "Lexend";
+  src: url("assets/fonts/Lexend-VariableFont.ttf");
+  font-style: normal;
+  font-weight: 100 900;
+}
+
+:root {
+  --blue: #1C0DB1;
+  --yellow: #FFC012;
+  --orange: #FF6912;
+  --green: #00FF83;
+
+}
+
+html {
+  --pst-font-family-base-system: "Lexend";
+}
+
+html[data-theme="light"] {
+  --pst-color-primary: var(--blue);
+  --pst-color-secondary: var(--green);
+}
+
+html[data-theme="dark"] {
+  --pst-color-primary: var(--green);
+  --pst-color-secondary: var(--green);
+}
