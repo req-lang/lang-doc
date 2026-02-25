@@ -1,0 +1,60 @@
+Core Concepts
+======================
+
+This section aims at defining the most relevant concepts to understand what composes a req specification.
+Definition are just meant to be an introduction, refer to the reference of the language for a more in-depth definition.
+
+.. note:: In the context of the req language, the term *specification* means a .req file.
+
+Entity
+**********************
+
+The term *entity* refers to specification objects that provides structure to the specification. An entity has several function:
+
+* Hold meta-information about the underlying artifact
+* Provide hierarchy and separation to the specification
+* Entity-specific function that is explained in the later sections 
+
+A specification is simply a tree of entities and entities can be gathered into two categories *defining* and *constraining* entities.
+
+
+.. attention:: While the terminology used mimicks the SysMLv2 terminology in order to ease understanding, there is not yet a guarantee of exact matching between the two. Furthermore, the req terminology is subject to change.
+
+Requirement
+~~~~~~~~~~~~~~~~~~~~~~
+
+The *requirement* is the base constraining entity. It can either be written in natural language:
+
+.. code-block:: req
+   :caption: Example of natural language requirement
+
+   requirement Ensure_sensor_temperature is
+    @@
+      The {System::Sensor::temperature} shall be maintained below 30C
+    @@
+   requirement
+
+Or using formal language:
+
+.. code-block:: req
+   :caption: Example of formal requirement
+
+   requirement Ensure_sensor_temperature is
+      System::Sensor::temperature < 30
+   requirement
+
+A requirement express a constraint on the system that can either be an expectation or an assumption. Typical examples are:
+
+* Stakeholder needs
+* High-level system requirements
+* Detailed equipment properties
+* Behavioral modeling
+
+.. note:: Requirements can include references to definitions, :ref:`part-def` or :ref:`attribute-def`.
+
+Package
+~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
