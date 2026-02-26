@@ -77,7 +77,7 @@ Features
 
 * *Token-efficient* approach for LLM
 
-* *Eliminates vendor lock-in* as requirements are not in ALM but in plain-text source files 
+* *Eliminates vendor lock-in* as requirements are not in ALM but in plain-text source file
 
 .. note:: The language is still under active development and this documentation is subject to change in the near future.
 
@@ -85,5 +85,6 @@ Features
   :maxdepth: 1
   :caption: Contents:
 
+  tutorials.rst
   overview.rst
   glossary.rst

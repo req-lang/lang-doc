@@ -83,6 +83,7 @@ Tags are useful to specify additional information about an entity:
   Tags can be used to represent project, domain or management specific data such as change-requests, validation-method, priority, ...
 
 .. _concept-requirement-label:
+
 Requirement
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -128,6 +129,7 @@ Requirements can include references to definitions, :ref:`concept-part-label` or
    Formal requirements are expected to be boolean expressions forming a verifiable statement about the system.
 
 .. _concept-package-label:
+
 Package
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -159,6 +161,7 @@ All these strategies can be combined to split the specification in the most conv
 .. note:: Packages can be considered as the sections and sub-sections of the specification.
 
 .. _concept-attribute-label:
+
 Attribute
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -181,6 +184,7 @@ Typical use cases for an attribute are:
    Attributes are meant to be used in formal :ref:`concept-requirement-label` in order to express properties that can benefit from advanced checking.
 
 .. _concept-part-label:
+
 Part
 ~~~~~~~~~~~~~~~~~~~~~~
 

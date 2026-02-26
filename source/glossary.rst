@@ -8,3 +8,6 @@ Glossary
 
     EARS
       Easy Approach to Requirements Sytax, one of the most popular requirements boilerplates set   
+
+    IDE
+      Integrated Environement Development, software providing general utilities for developers  
