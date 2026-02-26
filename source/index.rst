@@ -82,9 +82,10 @@ Features
 .. note:: The language is still under active development and this documentation is subject to change in the near future.
 
 .. toctree::
-  :maxdepth: 1
+  :maxdepth: 2
   :caption: Contents:
 
   tutorials.rst
   overview.rst
   glossary.rst
+  reference.rst
