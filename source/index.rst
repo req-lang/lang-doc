@@ -1,22 +1,26 @@
-Language
+req language official website!
 ======================
 
-Welcome to the req language official documentation website!
+This website contains the documentation of the language constitued by:
+
+* Getting started and advanced tutorials
+* Comprehensive language specification
+* Introduction to the language philosophy and design 
 
 What is req ?
 **********************
 
-The *req* is a *progressively formal* systems specification language:
+The *req* is a *progressively formal* specification language:
 
-* *Description language* that aims at gathering requirements and goals for a given project in a single source files set.
+* *Description language* that aims at gathering requirements and model for a given project.
 
-* *Embeds markdown*, allows to use all markdown constructs to provide rich information such as images, diagrams, table and maths.
+* *Embeds markdown*, to provide rich information such as images, diagrams, table and maths.
 
-* *Explicit definitions* of terms within the specification. This makes extracting a glossary and ontology easy and provides a single source of truth for all the wording.
+* *Explicit definitions usage*, to extracting a glossary and ontology and use it within requirements.
 
 * *Formal syntax* at its core to write *formal properties* of the system, allowing for units, maths and logic.
 
-The req language aims to express the *core specifications* of a project from stakeholder needs and goals to detailed engineering and design. It provides basic but powerful structural semantics, allowing for a hierarchy of *definitions*, *parts* and *requirements*.
+The req language aims to express the *core specifications* of a project from stakeholder needs and goals to detailed engineering and design. It provides simple but powerful constructs, allowing for modeling without enforcing a concept heavy-framework.
 
 .. code-block:: req
 
@@ -61,15 +65,15 @@ Features
 
 * Agnostic and lightweight *specification structure semantics*
 
-* Mainly focus on clear and transpilable *problem space description*
+* Mainly focus on clear *problem space description*
 
 * *Requirement is the primary semantic unit* of specification
 
-* *Lightweight MBSE approach*, based on core mathematical properties rather than diagrams
+* *MBSE approach*, based on core mathematical properties rather than diagrams
 
-* Made for both *easy export and import* and *human-readability*
+* Made for both *easy translation* other languages and *human-readability*
 
-* Incremental adoption, from already existing documents
+* Facilitates incremental adoption, from already existing documents
 
 * *Token-efficient* approach for LLM
 
