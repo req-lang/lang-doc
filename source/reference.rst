@@ -52,3 +52,10 @@ A syntax notation is used throughout this reference to describe the formal gramm
 * ``<LABEL_A | LABEL_B>`` represents a choice between two alternatives
 * ``LABEL?`` indicates zero or one occurrence, ``LABEL*`` zero or more, ``LABEL+`` one or more
 * All other tokens are literal
+
+Terminology
+**********************
+
+* *System* means the :term:`SOI` 
+* *Environement* means anything outside of the system required to specify the system
+* *Specification* means a req file, containing the specification of the system and its environement
