@@ -80,6 +80,62 @@ Adding an import brings a *prefix* into scope that is merged with references at 
 
 .. _reference-requirement-label:
 
+Meta-information
+**********************
+
+Each entity is provided with *meta-information* that is meant to provide additional context on the entity.
+
+Comment
+~~~~~~~~~~~~~~~~~~~~~~
+
+A *comment* is additional information about a given entity. Any entity can be provided with a comment; the comment may be interpreted differently depending on the kind of entity.
+
+
+.. code-block:: req
+   :caption: Example of comment 
+    
+   @@
+   # Rationale 
+
+   After client meeting, format fits the most for the desired application...
+   @@
+   requirement Significant_digit_and_format is
+    @@
+      The {System} shall use decimal format with 2 significant digits 
+    @@
+   requirement
+
+
+.. note::
+
+  A common practice is to always provide :ref:`concept-part-label` and :ref:`concept-attribute-label` with a comment that acts as a definition. :ref:`concept-requirement-label` comments can be used as rationale.
+
+
+Tags
+~~~~~~~~~~~~~~~~~~~~~~
+
+A *tag* is meta-information about a given entity, organized as a key-value pair. Any entity can be provided with tags and the value is optional.
+Tags are useful to specify additional information about an entity:
+
+
+.. code-block:: req
+   :caption: Example of tag 
+    
+   # verification proof #
+   # priority high #
+   requirement Perfection is
+    @@
+      The {System} shall be perfect 
+    @@
+   requirement
+
+
+.. note::
+
+  Tags can be used to represent project, domain or management specific data such as change-requests, validation-method, priority, ...
+
+
+
 Requirement
 **********************
 
