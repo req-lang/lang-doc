@@ -60,5 +60,5 @@ Terminology
 **********************
 
 * *System* means the :term:`SOI` 
-* *Environement* means anything outside of the system required to specify the system
+* *Environment* means anything outside of the system required to specify the system
 * *Specification* means a req file, containing the specification of the system and its environement

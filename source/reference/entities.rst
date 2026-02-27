@@ -108,7 +108,7 @@ A *comment* is additional information about a given entity. Any entity can be pr
 
 .. note::
 
-  A common practice is to always provide :ref:`concept-part-label` and :ref:`concept-attribute-label` with a comment that acts as a definition. :ref:`concept-requirement-label` comments can be used as rationale.
+  A common practice is to always provide :ref:`reference-part-label` and :ref:`reference-attribute-label` with a comment that acts as a definition. :ref:`reference-requirement-label` comments can be used as rationale.
 
 
 Tags

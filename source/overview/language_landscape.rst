@@ -18,7 +18,7 @@ For the purpose of this comparison, SysMLv2 is taken as representative of modeli
 SysMLv2 is mainly focused on **solution space description**: its primary design goal is to describe elements of solutions such as state machines, actions and interfaces within a specific thinking framework.
 This framework can be refined as required to narrow it down to a concrete methodology or approach.
 
-The req is mainly focused on **problem space description**, providing a way to describe system features using equations and mathematical properties.
+req is mainly focused on **problem space description**, providing a way to describe system features using equations and mathematical properties.
 
 Formalizing a requirement in SysMLv2 requires a significant amount of upfront boilerplate modeling to be used efficiently: constraints must be linked via ``satisfy`` relationships, and the constraint body can either be fully formal or plain-text documentation only, with no cross-references.
 
@@ -37,7 +37,7 @@ Advantages
 * Highly customizable semantics
 * Graphical description
 
-.. note:: The req is planned to be interoperable with SysMLv2 in the sense that requirements may be translated from/to SysMLv2.
+.. note:: req is planned to be interoperable with SysMLv2 in the sense that requirements may be translated from/to SysMLv2.
 
 Formal languages
 **********************
@@ -62,14 +62,14 @@ Advantages
 * Precise verification algorithms
 
 
-.. note:: The req takes the following approach: if it can be written using maths or logic, then it should be writable in req. Some expressions may be translated to formal languages but this is not always the case. Expressiveness is the priority, but some expressions may not be sound and therefore will not have a way to be proven.
+.. note:: req takes the following approach: if it can be written using maths or logic, then it should be writable in req. Some expressions may be translated to formal languages but this is not always the case. Expressiveness is the priority, but some expressions may not be sound and therefore will not have a way to be proven.
 
 Markup languages
 **********************
 
 Markdown and AsciiDoc are good examples: they provide good content structure (via headings), referencing and link features, and above all, rich text features.
 
-The req language is essentially a markup language with enhanced structural semantics — more adapted to systems engineering than headings — along with powerful references and mathematical expressions.
+req is essentially a markup language with enhanced structural semantics — more adapted to systems engineering than headings — along with powerful references and mathematical expressions.
 
 Drawbacks
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -94,7 +94,7 @@ Simulation languages
 
 Modelica, MATLAB and Simulink are common candidates. These languages excel at providing approximations of a solution in order to evaluate behavior. They are generally not provided with a powerful testing framework to monitor properties on simulation runs.
 
-The req language is the missing component to bring requirements verification within simulations. It should be possible to translate a formal property into a verifier component or a script within a simulation.
+req is the missing component to bring requirements verification within simulations. It should be possible to translate a formal property into a verifier component or a script within a simulation.
 
 Drawbacks
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -115,7 +115,7 @@ Advantages
 Wrapping Up
 **********************
 
-The req language is a middle ground between all the above-mentioned language categories. It attempts to focus primarily on requirements authoring, clarity and verifiability.
+req is a middle ground between all the above-mentioned language categories. It attempts to focus primarily on requirements authoring, clarity and verifiability.
 
 In this matter, none of the above-mentioned language categories provides both convenience, precision and non-engineer understandability.
 

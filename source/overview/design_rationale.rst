@@ -13,14 +13,14 @@ This rationale is opinionated and made to be challenged on future versions of th
 Documents-model bridge
 **********************
 
-*The req aims at providing a way to bridge between document-based systems engineering and model-based systems engineering.*
+*req aims at providing a way to bridge between document-based systems engineering and model-based systems engineering.*
 
 Observation
 ~~~~~~~~~~~~~~~~~~~~~~
 
 While model-based approaches are getting more and more popular, one can observe that modeling becomes less and less connected to the actual engineering artifacts that are produced by engineers during a system lifecycle.
 
-Basically, :ref:`MBSE` nowadays feels like drawing boxes and arrows rather than thinking about the systems. Translating these models to other engineers adds overload and creates friction which kills the benefits of the modeling effort.
+Basically, :term:`MBSE` nowadays feels like drawing boxes and arrows rather than thinking about the systems. Translating these models to other engineers adds overload and creates friction which kills the benefits of the modeling effort.
 
 More precisely, model-based systems engineering requires leveraging concepts that are getting further away from actual engineering, thus making adoption by engineers more difficult and its usage quite abstract.
 
@@ -34,7 +34,7 @@ Another interesting point is that despite the claimed rise of models, systems li
 Decisions
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The req language takes the following approach: start with already existing documents, gather those into req specifications, model progressively by introducing concepts and definitions from the bare text.
+req takes the following approach: start with already existing documents, gather those into req specifications, model progressively by introducing concepts and definitions from the bare text.
 
 The key concepts and terms are then explicitly referenced within the specification and the relations between those arise from the text. This is the actual model — no need to introduce labeled arrows and boxes. And since it starts from existing documents, one can understand the specification purely by reading text without being provided with a complex framework.
 
@@ -51,7 +51,7 @@ To mitigate this fact, it is preferable to rigorously define boilerplate and ter
 Requirements-centric
 **********************
 
-*The req provides a single atomic concept to model every property of the system: the requirements.*
+*req provides a single atomic concept to model every property of the system: the requirements.*
 
 .. note:: By requirements we mean every expectation or assumption that is stated in a specification.
 
@@ -97,7 +97,7 @@ The current mitigation regarding that matter is to use the provided tagging syst
 Progressively-formal
 **********************
 
-*The req language allows writing plain English as well as pure formal requirements, with the fewest limitations regarding the formalism used.*
+*req allows writing plain English as well as pure formal requirements, with the fewest limitations regarding the formalism used.*
 
 .. note:: Here formal means logics and maths, including set theory, discrete and (continuous planned) temporal logics, ...
 
@@ -171,12 +171,12 @@ Furthermore, when it comes to developing editors or a graphical notation, it is 
 Decision
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The req will be purely text-based and graphical representations are the responsibility of the client software that reads the specification. Furthermore, the format used for the req language will focus only on specification information that is worth being version controlled.
+req will be purely text-based and graphical representations are the responsibility of the client software that reads the specification. Furthermore, the format used for the req language will focus only on specification information that is worth being version controlled.
 
 Limitations
 ~~~~~~~~~~~~~~~~~~~~~~
 
-It might be harder to develop a graphical notation as it has been done for SysMLv2. The req language starts from the opposite direction: text-first, then maybe graphics.
+It might be harder to develop a graphical notation as it has been done for SysMLv2. req starts from the opposite direction: text-first, then maybe graphics.
 
 Another drawback is that meta-information related to an element of the language may not be easily parsed by the req tooling. Specific formats that might be used (JSON, programming language, ...) in the meta part of the specs will be considered plain-text.
 

@@ -135,7 +135,7 @@ Adding an attribute
 Consider the following question: what if several requirements deal with temperature and you want to identify exactly which ones?
 
 This question comes up naturally when searching for contradictions or analyzing the impact of a change.
-The notion of :ref:`concept-attribute-label` and :ref:`concept-part-label` was introduced precisely for this. Let's add an attribute under the ``Model`` part:
+The notion of :ref:`reference-attribute-label` and :ref:`reference-part-label` was introduced precisely for this. Let's add an attribute under the ``Model`` part:
 
 .. code-block:: req
 
@@ -171,7 +171,7 @@ The command outputs an error message that looks like this:
 
 This is a *diagnostic* established during the check, indicating that the requirement (line 8, column 7) references something that does not exist.
 
-The ``check`` command acts like a compiler for your specifications. A wide variety of diagnostics can be reported, and the explanation for each is given in the :ref:`spec-diagnostics-label` section.
+The ``check`` command acts like a compiler for your specifications. A wide variety of diagnostics can be reported; a description of each is available in the :doc:`Language Reference </reference>`.
 
 Switching to formal
 ~~~~~~~~~~~~~~~~~~~~~~
