@@ -11,3 +11,6 @@ Glossary
 
     IDE
       Integrated Environement Development, software providing general utilities for developers  
+
+    SOI
+      System Of Interest, system to be design, developed and deployed, can be interfaced with other systems and is subject to an environement
