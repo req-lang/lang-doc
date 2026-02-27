@@ -150,13 +150,8 @@ A *package* is a collection of sub-packages and requirements. A package gathers 
       package
     package
 
-Packages form a requirements partitioning of the system. Typical splitting strategies are:
-
-* Function, activity or operational breakdown of requirements
-* Non-functional requirements, included either as function sub-packages or a separate package
-* Level of detail: business, system, equipment, ...
-
-All these strategies can be combined to split the specification in the most convenient way.
+Packages partition requirements according to a *thematic breakdown*: functional, abstractions level, allocations, ... 
+Breakdown strategies can be combined to split the specification in the most convenient way.
 
 .. note:: Packages can be considered as the sections and sub-sections of the specification.
 
@@ -173,11 +168,7 @@ An *attribute* is the base defining entity. An attribute represents any valued p
     let current_speed in real [m/s]
     let has_overspeed in boolean
 
-Typical use cases for an attribute are:
-
-* A state variable of the specification that can evolve over time
-* A constant design parameter or external input
-* An event relevant to the specification
+Typical use cases for an attribute are system dynamic state, system parameter, constants...
 
 .. note::
 

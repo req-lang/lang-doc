@@ -46,11 +46,14 @@ Conventions
 
 * An *optional property* is expressed as an **affirmative phrase using the modal may**, e.g. "The expression may have a type." It should be read as "the expression may or may not have a type." A conforming implementation must handle both cases.
 
+* The use of modals, can, must, should refer to actual *specification property* not language properties.
+
 A syntax notation is used throughout this reference to describe the formal grammar of the language. It is intended to be more readable than BNF while remaining unambiguous:
 
 * ``LABEL`` (uppercase) represents a defined language concept
 * ``<LABEL_A | LABEL_B>`` represents a choice between two alternatives
 * ``LABEL?`` indicates zero or one occurrence, ``LABEL*`` zero or more, ``LABEL+`` one or more
+* ``(X)`` indicates a grouping, that is meant to be used with cardinality specification above
 * All other tokens are literal
 
 Terminology

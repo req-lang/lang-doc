@@ -12,5 +12,8 @@ Glossary
     IDE
       Integrated Environement Development, software providing general utilities for developers  
 
+    ontology
+      The hierarchical structure of :ref:`reference-part-label` entities in a req specification, representing a structured decomposition of the :term:`SOI` and its environment into named concepts and their attributes.
+
     SOI
       System Of Interest, system to be design, developed and deployed, can be interfaced with other systems and is subject to an environement

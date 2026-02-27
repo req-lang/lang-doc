@@ -96,7 +96,7 @@ An implementation satisfies a specification if and only if all requirements are 
     <MARKUP|EXPRESSION>
    requirement
 
-Requirements can either be *formal* by using an boolean expression:
+Requirements can either be *formal* by using a Boolean expression:
 
 .. code-block:: req
    :caption: Example of a formal requirement
@@ -144,22 +144,135 @@ Traceability
 Package
 **********************
 
-A *package* is a container element that provides a *viewpoint* for requirements. Packages can be nested to provide a hierarchy between viewpoints.
+A *package* is a container element that provides a namespace for requirements. Packages can be nested to provide a hierarchy between concern areas.
 
 .. code-block:: none
    :caption: Syntax
 
    package IDENTIFIER
-    <PACKAGE|PART|REQUIREMENT>
+    <PACKAGE|PART|REQUIREMENT|IMPORT>*
    package
 
+Packages are used to provide a *thematic breakdown* of requirements.
+
+.. code-block:: req
+   :caption: Example of a package
+
+   package Room_Control
+     package Temperature_Control  
+      requirement Keep_temperature_low_on_summer is
+        @@ ... @@
+      requirement
+     package
+
+     package Humidity_Control
+     package
+   package
+
+
+A :ref:`reference-requirement-label` belongs to one and only one package. Packages form a requirements partitioning of the system:
+
+* **Function**, activity or operational breakdown of requirements
+* **Non-functional** requirements, included either as function sub-packages or a separate package
+* **Level of detail**: business, system, equipment, ...
+
+.. note::
+
+   A package can contain :ref:`reference-part-label`, common use case is the root package that contain a root part.
 
 .. _reference-attribute-label:
 
 Attribute
 **********************
 
+An *attribute* is a named quantity of the specification that can be assigned a value. 
+
+.. code-block:: none
+   :caption: Syntax
+
+   let IDENTIFIER (in DOMAIN)? ([ UNIT ])? 
+
+
+An attribute can represent several aspects of a system:
+
+* A **state variable** of the specification that can evolve over time
+* A **constant parameter** or external input
+* An **event** relevant to the specification
+
+.. code-block:: req
+   :caption: Example of a set of attributes 
+
+   part Airplane
+      let current_speed in real [m/s]
+      let wingspan in real [m]
+      let has_landed in boolean
+    part
+
+An attribute has semantic *type*, inferred by the compiler from its domain and the expressions in which it appears. The type determines which operations are applicable to the attribute.
+
+Domain
+~~~~~~~~~~~~~~~~~~~~~~
+
+A *domain*, is the mathematical set of the allowed values of an attribute. It is defined first via an expression having the type ``Set`` in the attribute definition. 
+
+Formal requirements (see :ref:`reference-requirement-label`) constrain attributes. All constraints on an attribute must be *satisfiable* for the specification to be consistent.
+More precisely, each constraint narrows the domain of the attribute; if the domain becomes empty the specification is unsatisfiable.
+
+.. note::
+
+   As the number of constraints on an attribute grows, their intersection narrows. An empty intersection means the constraints are contradictory and the specification is unsatisfiable.
+
+
+Unit
+~~~~~~~~~~~~~~~~~~~~~~
+
+A physical *unit* can be provided to numerical attributes
+
+.. attention:: 
+
+  For now, units are freeform labels and are not validated by the compiler.
+
 .. _reference-part-label:
 
 Part
 **********************
+
+A *part* is a container element that provides a namespace for attributes and nested parts.
+Parts can be nested to represent a physical or conceptual decomposition of the :term:`SOI`
+and its environment. This hierarchical structure is called an :term:`ontology`.
+
+.. code-block:: none
+   :caption: Syntax
+
+   part IDENTIFIER
+    <ATTRIBUTE|PART|IMPORT>*
+   part
+
+Parts are typically used to partition a system in the following ways:
+
+* **Physical decomposition** — the system is broken down into sub-systems or sub-equipment.
+* **Conceptual decomposition** — B is a functional or logical aspect of A, without implying physical separation.
+
+.. code-block:: req
+   :caption: Example of a part
+
+   part Airplane
+     let current_speed in real [m/s]
+     let has_overspeed in boolean
+     part Wings
+       let wingspan in real [m]
+     part
+   part
+
+Unlike :ref:`reference-package-label`, it is common to use a part with no children to
+introduce a *concept* relevant to the specification. A part, even with no children, allows for a concept to be named and referenced in requirements before
+its attributes are defined.
+
+Informal requirements (see :ref:`reference-requirement-label`) on parts serve as high-level
+constraints that can be progressively formalized as the specification matures.
+
+.. note::
+
+   In a more general sense, a part represents an *aspect* of the system under
+   consideration — either a grouping of physical characteristics (geometry, mass, speed)
+   or functional characteristics (behavior, capability, mode).
