@@ -498,3 +498,136 @@ All expressions must be of type :ref:`reference-type-boolean-label`.
 
   This construct is particularly useful when multiple conditions govern a requirement simultaneously —
   for instance, when specifying an event-action mechanism such as a state machine.
+
+Quantifiers
+**********************
+
+A *quantifier* is an expression that evaluates over the elements of a set.
+By convention, in this section, :math:`x` denotes the identifier, :math:`X` the domain (expression after the ``in``), :math:`P(x)` the filter (expression after the ``such that``). 
+
+.. _reference-forall-label:
+
+Forall
+~~~~~~~~~~~~~~~~~~~~~~
+
+The *forall* quantifier is strictly equivalent to the universal quantifier of first-order logic :math:`\forall`.
+
+.. code-block:: none
+   :caption: Syntax
+
+    forall IDENTIFIER in EXPRESSION (such that EXPRESSION)?
+      EXPRESSION
+    end
+
+.. code-block:: req
+   :caption: Example of forall
+
+    requirement R is
+      forall t in train_units such that t::speed = 0
+        t::alarm_triggered
+      end
+    requirement
+
+The expression evaluates to :ref:`reference-type-boolean-label`.
+Denote the body expression :math:`Q(x)`; the forall block is strictly equivalent to:
+
+.. math::
+
+   \forall x \in X,\ P(x) \Rightarrow Q(x)
+
+When the ``such that`` clause is omitted, :math:`P(x)` is taken equal to :math:`\text{true}`, which simplifies to:
+
+.. math::
+
+   \forall x \in X,\ Q(x)
+
+.. note::
+
+   If the domain is empty, ``forall`` evaluates to ``true`` (vacuous truth).
+
+.. _reference-exists-label:
+
+Exists
+~~~~~~~~~~~~~~~~~~~~~~
+
+The *exists* quantifier is strictly equivalent to the existential quantifier of first-order logic :math:`\exists`.
+
+.. code-block:: none
+   :caption: Syntax
+
+    exists IDENTIFIER in EXPRESSION
+      such that EXPRESSION
+    end
+
+.. code-block:: req
+   :caption: Example of exists
+
+    requirement R is
+      exists t in train_units such that t::ready_for_departure
+      end
+    requirement
+
+The expression evaluates to :ref:`reference-type-boolean-label`.
+Unlike ``forall``, ``exists`` has no body expression: the ``such that`` clause is the predicate.
+The exists block is strictly equivalent to:
+
+.. math::
+
+   \exists x \in X,\ P(x)
+
+.. note::
+
+   If the domain is empty, ``exists`` evaluates to ``false``.
+
+.. _reference-select-label:
+
+Select
+~~~~~~~~~~~~~~~~~~~~~~
+
+The *select* quantifier has no first-order logic equivalent. It expresses the choice of an element within a set.
+
+.. code-block:: none
+   :caption: Syntax
+
+    select IDENTIFIER in EXPRESSION (such that EXPRESSION)?
+      (<maximizes|minimizes> EXPRESSION)?
+    end
+
+.. code-block:: req
+   :caption: Example of select
+
+    requirement R is
+      closest_plane = select p in managed_planes
+        minimizes p::distance_to_runway_threshold
+      end
+    requirement
+
+The expression evaluates to an element drawn from the input domain. The optional ``maximizes`` or ``minimizes`` part is called the *optimizer*.
+
+.. attention::
+
+   If the input domain is empty, the evaluation of the select is undefined.
+
+Denote :math:`a` the value the select block evaluates to and :math:`f(x)` the optimizer expression.
+Suppose the optimizer is a maximization; :math:`a` has the following property:
+
+.. math::
+
+  a \in X \wedge a = \underset{x \in X,\, P(x)}{\mathrm{argmax}}\ f(x)
+
+The minimization case is symmetric:
+
+.. math::
+
+  a \in X \wedge a = \underset{x \in X,\, P(x)}{\mathrm{argmin}}\ f(x)
+
+When no optimizer is specified, the select only guarantees:
+
+.. math::
+
+  a \in X
+
+.. note::
+
+   The choice is non-deterministic. Using the non-optimized form is useful to constrain intermediate
+   attributes or quantities that serve as inputs to other requirements.
