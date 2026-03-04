@@ -10,6 +10,7 @@ This rationale is opinionated and made to be challenged on future versions of th
 
 
 .. _document-model-bridge-label:
+
 Documents-model bridge
 **********************
 
@@ -94,6 +95,7 @@ The current mitigation regarding that matter is to use the provided tagging syst
 .. note:: This limitation is one of the most significant weaknesses of the req language and might be addressed in future versions via expectation/assumption mechanisms.
 
 .. _progressively-formal-label:
+
 Progressively-formal
 **********************
 

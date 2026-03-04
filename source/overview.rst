@@ -16,4 +16,5 @@ It is meant to be read in order, and mainly targets:
 
   overview/language_landscape
   overview/design_rationale
+  overview/use_cases
 

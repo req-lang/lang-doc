@@ -24,4 +24,7 @@ Glossary
     FOL
       First Order Logic, logic introducing existential and universal quantifiers, widely used in maths https://en.wikipedia.org/wiki/First-order_logic
 
+    ReqIF
+      Requirements Interchange Format, an OMG standard for exchanging requirements data between tools such as DOORS, Polarion, and Jama https://www.omg.org/spec/ReqIF
+
 
