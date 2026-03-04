@@ -33,7 +33,7 @@ req uses several formalisms in conjunction to produce expressions:
    * - Propositional logic
      - ``and``, ``or``
    * - :term:`LTL` (discrete-time)
-     - ``eventually``, ``globally``
+     - ``always``, ``eventually``
    * - :term:`FOL`
      - ``forall``, ``exists``
    * - Set theory
@@ -50,25 +50,31 @@ req uses several formalisms in conjunction to produce expressions:
    systems engineers.
 
 
-The :ref:`attributes <reference-attribute-label>` used in expression are considered time-dependent function.
-More precisely, let's suppose an attribute is defined by a requirement to be:
+In req, every attribute is treated as a signal that may change over time — similar to a measured
+variable in a control system or a recorded parameter in a flight data recorder. Formally, the
+attributes used in expressions are considered time-dependent functions.
+
+Suppose an attribute is defined by a requirement as:
 
 .. math::
 
    x = f(y, z)
 
-Where :math:`f` denotes an expression. It is assumed that :math:`x`, :math:`y` and :math:`z` are function of time ie.
-
+where :math:`f` denotes an expression. It is assumed that :math:`x`, :math:`y`, and :math:`z`
+are functions of time, i.e.:
 
 .. math::
 
-   \forall t\ x(t) = f(y(t), z(t))
+   \forall t\quad x(t) = f(y(t), z(t))
 
-As a corollary :math:`x` is constant if and only if :math:`y` and :math:`z` are constants (literals for instance).
+As a corollary, :math:`x` is constant if and only if :math:`y` and :math:`z` are constants
+(such as literals).
 
 .. note::
 
-  Unless explicitely stated by temporal operators, the attributes constraints hold for all :math:`t`, meaning during the whole lifecycle, for all operating conditions. One can further refine the modeling of the operating conditions or lifecycle by introducing attributes to discriminate between those. 
+   Unless explicitly stated by temporal operators, attribute constraints hold for all :math:`t` —
+   that is, across the entire system lifecycle and all operating conditions. This scope can be
+   narrowed by introducing attributes that represent specific operating conditions or lifecycle phases.
 
 
 Type system
@@ -77,7 +83,7 @@ Type system
 The *type* of an expression defines which operators can be applied to it.
 An :ref:`attribute <reference-attribute-label>` has a type that is inferred from its domain definition.
 
-Operators in req are strictly discriminated by type: applying an operator to an incompatible is not allowed.
+Operators in req are strictly typed: applying an operator to an expression of an incompatible type is not allowed.
 
 If a type cannot be inferred, the expression has the type *undefined*, which is not a true
 type but denotes the absence of typing information.
@@ -107,7 +113,7 @@ The type ``Boolean`` is applied to any boolean expression.
 Set
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The type ``Set`` is applied to any expression that evaluates to a set.
+The type ``Set(T)`` is applied to any expression that evaluates to a set.
 Sets are homogeneous in the sense that they can only contain elements of the same type.
 
 Literals
@@ -148,20 +154,6 @@ The Boolean literals ``true`` and ``false`` represent the two truth values.
 
 Values are of type :ref:`reference-type-boolean-label`.
 
-Undefined
-~~~~~~~~~~~~~~~~~~~~~~
-
-The literal ``undefined`` represents a value that has been explicitly left unspecified.
-
-.. code-block:: req
-   :caption: undefined
-
-    undefined
-
-.. note::
-
-   Undefined values are useful for relaxing a constraint when certain conditions are met.
-
 Set
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -201,12 +193,25 @@ Values are of type :ref:`reference-type-set-label`. Element type varies accordin
 Operators
 **********************
 
-An *operator* is an expression that contains one or several attributes or literals.
-Each operator is described with a formal equivalent which allows to translate the req expression into a logical and mathematical expression.
+An *operator* is an expression that contains one or more operands (attributes or literals).
+Each operator is paired with a formal equivalent that translates the req expression into standard mathematical notation.
 
 .. note::
 
-   The convention will be that ``x`` and ``y`` represents values which are not domains (sets), whereas ``X`` and ``Y`` represents domains.
+   Throughout this section, lowercase ``x`` and ``y`` denote scalar values, and uppercase ``X`` and ``Y`` denote sets (domains).
+
+Grouping
+~~~~~~~~~~~~~~~~~~~~~~
+
+Any sub-expression may be enclosed in parentheses to make evaluation order explicit:
+
+.. code-block:: none
+   :caption: Syntax
+
+    ( EXPRESSION )
+
+Parentheses always override the default precedence and associativity rules described in the
+:ref:`Precedence <reference-expression-precedence-label>` section below.
 
 Arithmetic
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -247,6 +252,32 @@ Arithmetic operators act on :ref:`reference-type-number-label` and evaluate to :
      - Factorial
      - :math:`x!`
 
+
+Equality
+~~~~~~~~~~~~~~~~~~~~~~
+
+Equality operators act on every type and evaluate to :ref:`reference-type-boolean-label`.
+In req, equality is always by value, the concept of reference does not exists. 
+
+.. list-table:: Comparison operators
+   :header-rows: 1
+
+
+   * - Syntax
+     - Description
+     - Formal equivalence
+   * - ``x = y``
+     - True if x and y are equal
+     - :math:`x = y`
+   * - ``x /= y``
+     - True if x and y are not equal
+     - :math:`x \neq y`
+ 
+.. attention::
+
+   In req, ``=`` is always an equality test, never an assignment. The expression
+   ``altitude = 120`` in a requirement body means "altitude shall be equal to 120".
+
 Comparison
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -259,12 +290,6 @@ Comparison operators act on :ref:`reference-type-number-label` and evaluate to
    * - Syntax
      - Description
      - Formal equivalence
-   * - ``x = y``
-     - True if x and y are equal
-     - :math:`x = y`
-   * - ``x /= y``
-     - True if x and y are not equal
-     - :math:`x \neq y`
    * - ``x < y``
      - True if x is strictly less than y
      - :math:`x < y`
@@ -326,11 +351,11 @@ The following operators act on :ref:`reference-type-set-label` and evaluate to :
      - Elements belonging to both X and Y
      - :math:`X \cap Y`
    * - ``X difference Y``
-     - Symmetric difference of X and Y 
-     - :math:`X \Delta Y = X \cup Y \backslash X \cap Y`
+     - Symmetric difference of X and Y
+     - :math:`X \Delta Y = (X \cup Y) \setminus (X \cap Y)`
    * - ``X complement Y``
-     - Elements of Y that are not in X
-     - :math:`Y \backslash X`
+     - Elements of X that are not in Y
+     - :math:`X \setminus Y`
 
 The following operators act on :ref:`reference-type-set-label` and evaluate to :ref:`reference-type-boolean-label`.
 
@@ -382,12 +407,14 @@ of time steps. See :term:`LTL` for the underlying formalism.
 
 .. note::
 
-   The notion of time step does not refer to a particular time division and sampling, one can consider that time steps are just an arbitrary division that splits continuous time into event points that changes states (ie. the value of the attributes).
+   The notion of time step does not refer to a particular time division or sampling rate.
+   Time steps can be thought of as an arbitrary division that splits continuous time into
+   event points at which state changes occur (i.e., the values of the attributes change).
 
 Aggregator
 ~~~~~~~~~~~~~~~~~~~~~~
 
-An *aggregator*  take a list of arguments and evaluates to a single value. 
+An *aggregator* takes a list of expressions as arguments and evaluates to a single value.
 
 .. code-block:: none
    :caption: Syntax
@@ -407,10 +434,39 @@ An *aggregator*  take a list of arguments and evaluates to a single value.
      - True if at least one argument is true
      - :math:`\bigvee x_i`
 
+.. code-block:: req
+   :caption: Example of aggregators
+
+    requirement R is
+     all
+      speed < max_speed,
+      altitude < max_altitude,
+      fuel_level > reserve
+     end
+    requirement
+
 .. note::
 
    Boolean aggregators are the list counterparts of ``and`` and ``or``: ``all e1, e2 end`` is
    equivalent to ``e1 and e2``, and ``any e1, e2 end`` is equivalent to ``e1 or e2``.
+
+.. _reference-expression-precedence-label:
+
+
+Function call
+~~~~~~~~~~~~~~~~~~~~~~
+
+A function call applies an expression to a list of arguments:
+
+.. code-block:: none
+   :caption: Syntax
+
+    EXPRESSION ( EXPRESSION (, EXPRESSION)* )
+
+.. attention::
+
+   Function calls are recognised by the parser but are not yet type-checked or evaluated
+   by the compiler. This construct is reserved for future use.
 
 Conditional
 **********************
@@ -621,7 +677,13 @@ The minimization case is symmetric:
 
   a \in X \wedge a = \underset{x \in X,\, P(x)}{\mathrm{argmin}}\ f(x)
 
-When no optimizer is specified, the select only guarantees:
+When no optimizer is specified but a ``such that`` clause is present, the select guarantees:
+
+.. math::
+
+  a \in X \wedge P(a)
+
+When neither optimizer nor filter is specified:
 
 .. math::
 
@@ -631,3 +693,54 @@ When no optimizer is specified, the select only guarantees:
 
    The choice is non-deterministic. Using the non-optimized form is useful to constrain intermediate
    attributes or quantities that serve as inputs to other requirements.
+
+
+Precedence
+**********************
+
+The table below lists all operators from lowest to highest precedence. Operators on the same
+row have equal precedence. When in doubt, use parentheses to make evaluation order explicit.
+
+.. list-table:: Operator precedence (lowest to highest)
+   :header-rows: 1
+
+   * - Operators
+     - Associativity
+   * - ``iff``  ``implies``
+     - Left
+   * - ``or``  ``xor``
+     - Left
+   * - ``and``
+     - Left
+   * - ``not`` *(prefix)*
+     - —
+   * - ``always``  ``eventually``  ``previously``  ``rising``  ``falling`` *(prefix)*
+     - —
+   * - ``since``
+     - Left
+   * - ``union``  ``difference``
+     - Left
+   * - ``intersection``
+     - Left
+   * - ``complement``
+     - Left
+   * - ``in``  ``includes``
+     - Left
+   * - ``=``  ``/=``
+     - Left
+   * - ``<``  ``>``  ``<=``  ``>=``
+     - Left
+   * - ``+``  ``-``
+     - Left
+   * - ``*``  ``/``  ``%``
+     - Left
+   * - ``^``
+     - Right
+   * - Unary ``-``  ``+``  ``not``
+     - —
+   * - ``x!``
+     - —
+   * - ``f(...)``
+     - Left
+
+
