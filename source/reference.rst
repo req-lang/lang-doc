@@ -25,7 +25,9 @@ Only fully specified features are covered here. Draft or experimental functional
   :maxdepth: 1
   :caption: Contents:
 
-  reference/entities
+  reference/entity
+  reference/markup
+  reference/expression
 
 Prerequisites
 **********************
@@ -34,7 +36,7 @@ The expression language covers a broad range of formal concepts. Familiarity wit
 
 * Systems engineering, particularly :term:`MBSE` and languages such as SysML
 * Requirements engineering, particularly functional and physical decomposition
-* Formal logic, particularly `LTL <https://en.wikipedia.org/wiki/Linear_temporal_logic>`__ and `FOL <https://en.wikipedia.org/wiki/First-order_logic>`__
+* Formal logic, particularly :term:`LTL` and :term:`FOL`
 * Mathematics, particularly `set theory <https://en.wikipedia.org/wiki/Set_theory>`__
 
 These are not strict prerequisites. Entity constructs and informal requirements can be used without any background in formal methods.

@@ -78,7 +78,6 @@ Adding an import brings a *prefix* into scope that is merged with references at 
 
    import PATH
 
-.. _reference-requirement-label:
 
 Meta-information
 **********************
@@ -88,8 +87,7 @@ Each entity is provided with *meta-information* that is meant to provide additio
 Comment
 ~~~~~~~~~~~~~~~~~~~~~~
 
-A *comment* is additional information about a given entity. Any entity can be provided with a comment; the comment may be interpreted differently depending on the kind of entity.
-
+A *comment* is additional information about a given entity. Any entity can be provided with a comment; the comment may be interpreted differently depending on the kind of entity. 
 
 .. code-block:: req
    :caption: Example of comment 
@@ -105,6 +103,7 @@ A *comment* is additional information about a given entity. Any entity can be pr
     @@
    requirement
 
+The comment is written using the :ref:`reference-markup-label` syntax.
 
 .. note::
 
@@ -134,7 +133,7 @@ Tags are useful to specify additional information about an entity:
 
   Tags can be used to represent project, domain or management specific data such as change-requests, validation-method, priority, ...
 
-
+.. _reference-requirement-label:
 
 Requirement
 **********************
@@ -152,7 +151,7 @@ An implementation satisfies a specification if and only if all requirements are 
     <MARKUP|EXPRESSION>
    requirement
 
-Requirements can either be *formal* by using a Boolean expression:
+Requirements can either be *formal* by using a Boolean :ref:`reference-expression-label`:
 
 .. code-block:: req
    :caption: Example of a formal requirement
@@ -162,7 +161,7 @@ Requirements can either be *formal* by using a Boolean expression:
     end
    requirement
 
-Or *informal* by using a markup:
+Or *informal* by using the the :ref:`reference-markup-label` syntax:
 
 .. code-block:: req
    :caption: Example of an informal requirement

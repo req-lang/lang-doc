@@ -17,3 +17,11 @@ Glossary
 
     SOI
       System Of Interest, system to be designed, developed and deployed, can be interfaced with other systems and is subject to an environment
+
+    LTL
+      Linear Temporal Logic, logic useful to define properties on the timing of a sequence of boolean values https://en.wikipedia.org/wiki/Linear_temporal_logic
+
+    FOL
+      First Order Logic, logic introducing existential and universal quantifiers, widely used in maths https://en.wikipedia.org/wiki/First-order_logic
+
+
