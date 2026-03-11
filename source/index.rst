@@ -29,41 +29,41 @@ concept-heavy framework.
 .. code-block:: req
    :caption: Progressive formalization — informal and formal requirements in the same file
 
-  @@
-    The most **famous** example in the coding world...
-  @@
-  package Hello_World
-    part Model
-      part Output
-        let value in text
-        let ready in boolean
+    @@
+      The most **famous** example in the coding world...
+    @@
+    package Hello_World
+      part Model
+        part Output
+          let value in text
+          let ready in boolean
+        part
       part
-    part
 
-    package Requirements
-      requirement Print is
+      package Requirements
+        requirement Print is
+          @@
+            When {Hello_World::Output::ready},
+            {Hello_World::Output::value} shall be equal to 'Hello World'
+          @@
+        requirement
+
         @@
-          When {Hello_World::Output::ready},
-          {Hello_World::Output::value} shall be equal to 'Hello World'
+          This is *progressive formalization* of {Hello_World::Requirements::Print}
+
+          # Comments
+
+          It wasn't *clear* enough in informal syntax according to John
         @@
-      requirement
-
-      @@
-        This is *progressive formalization* of {Hello_World::Requirements::Print}
-
-        # Comments
-
-        It wasn't *clear* enough in informal syntax according to John
-      @@
-      requirement Print_Formal
-      refines Hello_World::Requirements::Print
-      is
-        when
-          Hello_World::Output::ready then Hello_World::Output::value = 'Hello World'
-        end
-      requirement
+        requirement Print_Formal
+        refines Hello_World::Requirements::Print
+        is
+          when
+            Hello_World::Output::ready then Hello_World::Output::value = 'Hello World'
+          end
+        requirement
+      package
     package
-  package
 
 Features
 **********************
@@ -93,10 +93,12 @@ Features
    specification.
 
 .. toctree::
-  :maxdepth: 2
+  :maxdepth: 1
   :caption: Contents:
 
   tutorials.rst
   overview.rst
   glossary.rst
   reference.rst
+  tooling.rst
+
