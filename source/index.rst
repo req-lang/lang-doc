@@ -39,7 +39,7 @@ concept-heavy framework.
           let ready in boolean
         part
       part
-
+    
       package Requirements
         requirement Print is
           @@
@@ -55,6 +55,7 @@ concept-heavy framework.
 
           It wasn't *clear* enough in informal syntax according to John
         @@
+        # sil 4 #
         requirement Print_Formal
         refines Hello_World::Requirements::Print
         is
