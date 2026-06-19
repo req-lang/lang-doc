@@ -42,3 +42,5 @@ To benefit from hot reload use `sphinx-autobuild`:
 ```
 $ sphinx-autobuild ./source ./build
 ```
+
+Copyright (c), all rights reserved Sami Dahoux 2021-2026
